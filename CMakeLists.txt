@@ -1,3 +1,5 @@
 cmake_minimum_required(VERSION 3.17)
 project(CompetitiveProgramming)
-add_executable(CompetitiveProgramming Learn/HelloWorld.cpp)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_COMPILER  g++)
+add_executable(CompetitiveProgramming Learn/code.cpp)

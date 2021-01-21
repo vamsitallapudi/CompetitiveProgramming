@@ -143,32 +143,32 @@ CompetitiveProgramming/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/build
 .PHONY : CompetitiveProgramming/fast
 
-Learn/HelloWorld.o: Learn/HelloWorld.cpp.o
+Learn/code.o: Learn/code.cpp.o
 
-.PHONY : Learn/HelloWorld.o
+.PHONY : Learn/code.o
 
 # target to build an object file
-Learn/HelloWorld.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/HelloWorld.cpp.o
-.PHONY : Learn/HelloWorld.cpp.o
+Learn/code.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/code.cpp.o
+.PHONY : Learn/code.cpp.o
 
-Learn/HelloWorld.i: Learn/HelloWorld.cpp.i
+Learn/code.i: Learn/code.cpp.i
 
-.PHONY : Learn/HelloWorld.i
+.PHONY : Learn/code.i
 
 # target to preprocess a source file
-Learn/HelloWorld.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/HelloWorld.cpp.i
-.PHONY : Learn/HelloWorld.cpp.i
+Learn/code.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/code.cpp.i
+.PHONY : Learn/code.cpp.i
 
-Learn/HelloWorld.s: Learn/HelloWorld.cpp.s
+Learn/code.s: Learn/code.cpp.s
 
-.PHONY : Learn/HelloWorld.s
+.PHONY : Learn/code.s
 
 # target to generate assembly for a file
-Learn/HelloWorld.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/HelloWorld.cpp.s
-.PHONY : Learn/HelloWorld.cpp.s
+Learn/code.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/code.cpp.s
+.PHONY : Learn/code.cpp.s
 
 # Help Target
 help:
@@ -179,9 +179,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... CompetitiveProgramming"
-	@echo "... Learn/HelloWorld.o"
-	@echo "... Learn/HelloWorld.i"
-	@echo "... Learn/HelloWorld.s"
+	@echo "... Learn/code.o"
+	@echo "... Learn/code.i"
+	@echo "... Learn/code.s"
 .PHONY : help
 
 
