@@ -36,17 +36,16 @@ void   c_p_c()
 int main()
 {
 	c_p_c();
-    // int n;
-    // cin>>n;
-    // int x = (n-1)/3; // multiples_of_3
-    // int y = (n-1)/5; // multiples_of_5
-    // int z = (n-1)/15; // multiples_of_15
+    long n;
+    cin>>n;
+    long x = (n-1)/3; // multiples_of_3
+    long y = (n-1)/5; // multiples_of_5
+    long z = (n-1)/15; // multiples_of_15
 
-    // int sum_for_3 = (x * (2*3 + (x-1)*3))/2;  //we wrote like this due to precedence
-    // int sum_for_5 = (y * (2*5 + (y-1)*5))/2;  //we wrote like this due to precedence
-    // int sum_for_15 = (z * (2*15 + (z-1)*15))/2;  //we wrote like this due to precedence
-    // int ans = (sum_for_3 + sum_for_5 - sum_for_15);
-    int n;
-    cout<<sizeof(n)<<endl;
+    long sum_for_3 = (x * (2*3 + (x-1)*3))/2;  //we wrote like this due to precedence
+    long sum_for_5 = (y * (2*5 + (y-1)*5))/2;  //we wrote like this due to precedence
+    long sum_for_15 = (z * (2*15 + (z-1)*15))/2;  //we wrote like this due to precedence
+    long ans = (sum_for_3 + sum_for_5 - sum_for_15);
+    cout<<ans<<endl;
 	return 0;
 }
