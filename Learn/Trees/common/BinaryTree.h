@@ -17,15 +17,12 @@ struct TreeNode
 TreeNode *formBinaryTree()
 {
 
-    /*              1
+    /* Forming the following Binary Tree:
+                    1
                   /   \
                  2     3
                /   \
               4     5
-    *
-    * 
-    * 
-    * 
     */
 
     struct TreeNode *a = new TreeNode(4);
