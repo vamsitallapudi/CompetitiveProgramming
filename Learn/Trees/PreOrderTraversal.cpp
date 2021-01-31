@@ -56,12 +56,11 @@ vector<int> preorderTraversal(TreeNode* root) {
 void solve() {
     TreeNode* node = formBinaryTree();
     vector<int> values = preorderTraversal(node);
-    for(int i=0;i<values.size()-1;i++)
+    for(int i=0;i<values.size();i++)
     {   
         cout<<values[i];
 
-    }
-    
+    } 
 }
 int main()
 {
