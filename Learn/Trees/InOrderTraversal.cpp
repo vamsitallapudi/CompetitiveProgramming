@@ -43,9 +43,9 @@ vector<int> inorderTraversal(TreeNode* root) {
             stack.push(root);
             root = root->left;
         } else {
-            TreeNode* x = stack.top();
-            list.push_back(x->val);
-            stack.pop();
+            TreeNode* x = stack.top(); // reading top value without removing
+            list.push_back(x->val); // adding values after processing left sub-tree before right sub-tree
+            stack.pop(); // removing top value from stack
             root = x->right;
         }
     }

@@ -36,17 +36,16 @@ void   c_p_c()
 }
 
 vector<int> preorderTraversal(TreeNode* root) {
-
     stack<TreeNode*> stack;
     vector<int> values;
     while(root || stack.size()>0) {
         if(root) {
             stack.push(root);
-            values.push_back(root->val);
+            values.push_back(root->val); // adding values before processing left sub-tree
             root = root->left;
         } else {
-                TreeNode* x = stack.top();
-                stack.pop();
+                TreeNode* x = stack.top(); // reading top value without removing
+                stack.pop(); // popping top value
                 root = x->right;
         }
     }
