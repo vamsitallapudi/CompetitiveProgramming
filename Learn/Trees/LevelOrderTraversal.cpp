@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
 #include "common/BinaryTree.h"
-
 using namespace __gnu_pbds;
 using namespace std;
 
@@ -34,33 +33,42 @@ void   c_p_c()
     freopen("output.txt", "w", stdout);
 #endif
 }
-vector<int> postorderTraversal(TreeNode* root) {
-    vector<int> list;
-    stack<TreeNode*> stack;
-    if(!root)
-        return list;
-    stack.push(root);
-    while(stack.size()>0) {
-        root = stack.top(); // reading top value without removing
-        stack.pop(); // popping top value
-        list.insert(list.begin(),root->val);
-        if(root->left) {
-            stack.push(root->left);
-        } 
-        if (root->right) {
-            stack.push(root->right);
+
+vector<vector<int>> levelOrder(TreeNode* root) {
+    vector<vector<int>> result;
+    if (!root) return result;
+    vector<int> curr_queue;
+    queue<TreeNode*> q;
+
+    q.push(root);
+    q.push(NULL);
+
+    while(!q.empty()) {
+        TreeNode* node = q.front();
+        q.pop();
+        if(node == NULL) {
+            // reached end position of curr level
+            result.push_back(curr_queue);
+            curr_queue.resize(0);
+            if(q.size()>0) {
+                q.push(NULL);
+            }
+        } else {
+            curr_queue.push_back(node->val);
+            if(node->left) q.push(node->left);
+            if(node->right) q.push(node->right);
         }
     }
-    return list;
+    return result;
 }
 
 void solve() {
-    TreeNode* node = formBinaryTree();
-    vector<int> values = postorderTraversal(node);
-    for(int i=0;i<values.size();i++)
-    {   
-        cout<<values[i];
-
+    vector<vector<int>> lvlOrder = levelOrder(formBinaryTree());
+    for (int i = 0; i< lvlOrder.size();i++) {
+        vector<int> level = lvlOrder[i];
+        for (int j= 0;j< level.size();j++) {
+            cout<<level[j];
+        }
     }
 }
 int main()
