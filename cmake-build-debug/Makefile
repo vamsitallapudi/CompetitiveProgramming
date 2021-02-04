@@ -143,32 +143,32 @@ CompetitiveProgramming/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/build
 .PHONY : CompetitiveProgramming/fast
 
-Learn/code.o: Learn/code.cpp.o
+Learn/Trees/LevelOrderTraversal.o: Learn/Trees/LevelOrderTraversal.cpp.o
 
-.PHONY : Learn/code.o
+.PHONY : Learn/Trees/LevelOrderTraversal.o
 
 # target to build an object file
-Learn/code.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/code.cpp.o
-.PHONY : Learn/code.cpp.o
+Learn/Trees/LevelOrderTraversal.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/Trees/LevelOrderTraversal.cpp.o
+.PHONY : Learn/Trees/LevelOrderTraversal.cpp.o
 
-Learn/code.i: Learn/code.cpp.i
+Learn/Trees/LevelOrderTraversal.i: Learn/Trees/LevelOrderTraversal.cpp.i
 
-.PHONY : Learn/code.i
+.PHONY : Learn/Trees/LevelOrderTraversal.i
 
 # target to preprocess a source file
-Learn/code.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/code.cpp.i
-.PHONY : Learn/code.cpp.i
+Learn/Trees/LevelOrderTraversal.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/Trees/LevelOrderTraversal.cpp.i
+.PHONY : Learn/Trees/LevelOrderTraversal.cpp.i
 
-Learn/code.s: Learn/code.cpp.s
+Learn/Trees/LevelOrderTraversal.s: Learn/Trees/LevelOrderTraversal.cpp.s
 
-.PHONY : Learn/code.s
+.PHONY : Learn/Trees/LevelOrderTraversal.s
 
 # target to generate assembly for a file
-Learn/code.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/code.cpp.s
-.PHONY : Learn/code.cpp.s
+Learn/Trees/LevelOrderTraversal.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CompetitiveProgramming.dir/build.make CMakeFiles/CompetitiveProgramming.dir/Learn/Trees/LevelOrderTraversal.cpp.s
+.PHONY : Learn/Trees/LevelOrderTraversal.cpp.s
 
 # Help Target
 help:
@@ -179,9 +179,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... CompetitiveProgramming"
-	@echo "... Learn/code.o"
-	@echo "... Learn/code.i"
-	@echo "... Learn/code.s"
+	@echo "... Learn/Trees/LevelOrderTraversal.o"
+	@echo "... Learn/Trees/LevelOrderTraversal.i"
+	@echo "... Learn/Trees/LevelOrderTraversal.s"
 .PHONY : help
 
 

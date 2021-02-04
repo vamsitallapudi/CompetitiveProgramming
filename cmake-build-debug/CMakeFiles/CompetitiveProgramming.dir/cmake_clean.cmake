@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/CompetitiveProgramming.dir/Learn/code.cpp.o"
+  "CMakeFiles/CompetitiveProgramming.dir/Learn/Trees/LevelOrderTraversal.cpp.o"
   "CompetitiveProgramming"
   "CompetitiveProgramming.pdb"
 )
