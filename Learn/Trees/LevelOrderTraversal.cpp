@@ -63,7 +63,7 @@ vector<vector<int>> levelOrder(TreeNode* root) {
 }
 
 void solve() {
-    vector<vector<int>> lvlOrder = levelOrder(formBinaryTree());
+    vector<vector<int>> lvlOrder = levelOrder(initBinaryTree());
     for (int i = 0; i< lvlOrder.size();i++) {
         vector<int> level = lvlOrder[i];
         for (int j= 0;j< level.size();j++) {

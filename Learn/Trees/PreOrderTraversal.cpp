@@ -53,7 +53,7 @@ vector<int> preorderTraversal(TreeNode* root) {
 }
 
 void solve() {
-    TreeNode* node = formBinaryTree();
+    TreeNode* node = initBinaryTree();
     vector<int> values = preorderTraversal(node);
     for(int i=0;i<values.size();i++)
     {   

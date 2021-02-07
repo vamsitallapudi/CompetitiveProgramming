@@ -44,7 +44,7 @@ void   c_p_c()
 	TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-TreeNode* formBinaryTree() {
+TreeNode* initBinaryTree() {
 	struct TreeNode* a = new TreeNode(4);
 	struct TreeNode* b = new TreeNode(5);
 	struct TreeNode* c = new TreeNode(2, a, b);
@@ -67,7 +67,7 @@ void printTree(TreeNode *x) {
 }
 
 void solve() {
-	TreeNode* x = formBinaryTree();
+	TreeNode* x = initBinaryTree();
 	printTree(x);	
 }
 int main()

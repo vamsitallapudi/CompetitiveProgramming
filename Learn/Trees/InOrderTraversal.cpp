@@ -53,7 +53,7 @@ vector<int> inorderTraversal(TreeNode* root) {
 }
 
 void solve() {
-     TreeNode* node = formBinaryTree();
+     TreeNode* node = initBinaryTree();
     vector<int> values = inorderTraversal(node);
     for(int i=0;i<values.size()-1;i++)
     {   

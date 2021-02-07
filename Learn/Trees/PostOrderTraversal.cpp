@@ -55,7 +55,7 @@ vector<int> postorderTraversal(TreeNode* root) {
 }
 
 void solve() {
-    TreeNode* node = formBinaryTree();
+    TreeNode* node = initBinaryTree();
     vector<int> values = postorderTraversal(node);
     for(int i=0;i<values.size();i++)
     {   
