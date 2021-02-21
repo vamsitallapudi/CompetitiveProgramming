@@ -6,3 +6,5 @@ Learn/Trees/LevelOrderTraversal.dSYM/Contents/Resources/DWARF/LevelOrderTraversa
 Learn/Trees/output.txt
 Learn/Trees/PathSumIterative.dSYM/Contents/Info.plist
 Learn/Trees/PathSumIterative.dSYM/Contents/Resources/DWARF/PathSumIterative
+*.dSYM/
+*.txt
