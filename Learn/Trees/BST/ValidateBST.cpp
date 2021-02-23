@@ -45,7 +45,7 @@ bool isValidBST(TreeNode* root) {
         } else {
             root = t_stack.top();
             t_stack.pop();
-            //main logic - root value always greater than previous value.
+            //main logic - root value always greater than previous value (left < root <right)
             if (prev && root->val <=prev->val) return false;
             prev = root;
             root = root->right;
