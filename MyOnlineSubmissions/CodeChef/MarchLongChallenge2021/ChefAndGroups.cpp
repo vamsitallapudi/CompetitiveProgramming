@@ -34,23 +34,21 @@ void   c_p_c()
 }
 void solve() {
     int T;
-    string s;
-    getline(cin, s);
-    T = stoi(s);
+    cin >> T;
     while(T--) {
         string s;
-        int groups = 0;
-        getline(cin, s);  // to read the line
-        ll n = s.length();
-        char c[n];
-        strcpy(c, s.c_str()); // to copy str to char array
-
-        char prev = '0';
-        for (ll i = 0; i < n; i++) {
-            if(prev == '0' && c[i] == '1') {
-                groups++;
+        cin >> s;
+        int  groups = 0;
+        ll i = 0;
+        while (i < s.length()) {
+            if(s[i] == '0') {
+                i++;
+            } else {
+                    groups++;
+                    while(s[i] == '1') {
+                        i++;
+                    }
             }
-            prev = c[i];
         }
         cout<<groups<<endl;
     }
