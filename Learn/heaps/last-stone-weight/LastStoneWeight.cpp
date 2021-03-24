@@ -37,7 +37,7 @@ int removeLargest(vector<int>& stones) {
     // extracting largest value of vectors
     int largestVal = stones.at(indexOfLargest);
     // swapping last element with large element
-    stones[indexOfLargest] = stones.at(stones.size()-1);
+    swap(stones[indexOfLargest], stones[stones.size()-1]);
     stones.pop_back();
     return largestVal;
 }
