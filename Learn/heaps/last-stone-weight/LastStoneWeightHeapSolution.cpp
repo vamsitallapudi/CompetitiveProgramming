@@ -32,8 +32,36 @@ void   c_p_c()
     freopen("output.txt", "w", stdout);
 #endif
 }
+
+class Solution {
+public:
+    int lastStoneWeight(vector<int>& stones) {
+        priority_queue<int> heap;
+        for(int i = 0; i<stones.size();i++) {
+            heap.push(stones[i]);
+        }
+        
+        while(heap.size() > 1) {
+            int stone1 = heap.top();
+            heap.pop();
+            int stone2 = heap.top();
+            heap.pop();
+            if(stone1 != stone2) {
+                heap.push(stone1-stone2);
+            }
+        }
+        if(heap.empty()) {
+            return 0;
+        } else {
+            return heap.top();
+        }
+    }
+};
+
 void solve() {
-    
+    Solution* s = new Solution();
+    vector<int> vect = {2,7,4,1,8,1};
+    cout<<s->lastStoneWeight(vect);
 }
 int main()
 {
