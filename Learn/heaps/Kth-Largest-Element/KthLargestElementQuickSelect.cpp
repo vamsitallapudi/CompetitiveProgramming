@@ -59,10 +59,10 @@ public:
         swap(vect[right], vect[my_index]);
         return my_index;
     }
-    void quickSelect(int left, int right, int k_smallest)
+    int quickSelect(int left, int right, int k_smallest)
     {
         if (left == right)
-            return;
+            return vect[left];
 
         int n = vect.size();
         int pivot_index = left + rand() % (right - left + 1);
@@ -71,24 +71,23 @@ public:
         if (pivot_index == k_smallest)
         {
             // we got our element
-            return;
+            return vect[pivot_index];
         }
         else if (k_smallest < pivot_index)
         {
-            quickSelect(left, pivot_index - 1, k_smallest);
+            return quickSelect(left, pivot_index - 1, k_smallest);
         }
         else
         {
-            quickSelect(pivot_index + 1, right, k_smallest);
+            return quickSelect(pivot_index + 1, right, k_smallest);
         }
     }
     int findKthLargest(vector<int> &nums, int k)
     {
         vect = nums;
         int n = vect.size();
-        // since kth largest = (n-k)th smallest
-        quickSelect(0, n - 1, n - k);
-        return vect[n - k];
+        // since kth largest = (n-k)th smallest, in ascending order
+        return quickSelect(0, n - 1, n - k);
     }
 };
 
