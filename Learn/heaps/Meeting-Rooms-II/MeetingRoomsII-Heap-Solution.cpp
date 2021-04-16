@@ -49,18 +49,13 @@ private:
         }
     };
 
-    bool compareStartIntervals(vector<int> a, vector<int> b)
-    {
-        return a[0] < b[0];
-    }
-
-    struct myclass
+    struct Comparing
     {
         bool operator()(vector<int> a, vector<int> b)
         {
             return a[0] < b[0];
         }
-    } myobject;
+    } myObject;
 
 public:
     int minMeetingRooms(vector<vector<int>> &intervals)
@@ -68,7 +63,7 @@ public:
         if (intervals.empty())
             return 0;
 
-        sort(intervals.begin(), intervals.end(), myobject);
+        sort(intervals.begin(), intervals.end(), myObject);
 
         priority_queue<vector<int>, vector<vector<int>>, Comparator> minHeap;
         for (auto &x : intervals)
