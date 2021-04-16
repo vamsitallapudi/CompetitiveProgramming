@@ -49,7 +49,7 @@ private:
         }
     };
 
-    static bool compare(vector<int> a, vector<int> b)
+    static bool compare(vector<int> &a, vector<int> &b)
     {
         return a[0] < b[0];
     }
