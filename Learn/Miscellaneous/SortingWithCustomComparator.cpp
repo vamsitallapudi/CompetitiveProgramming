@@ -45,8 +45,12 @@ bool compare(vector<int> i1, vector<int> i2)
 
 void solve()
 {
-    vector<vector<int>> i;
+    vector<vector<int>> i{{6, 4}, {3, 2}, {1, 3}};
     sort(i.begin(), i.end(), compare);
+    for (auto &a : i)
+    {
+        cout << a[0] << " " << a[1] << endl;
+    }
 }
 
 int main()
