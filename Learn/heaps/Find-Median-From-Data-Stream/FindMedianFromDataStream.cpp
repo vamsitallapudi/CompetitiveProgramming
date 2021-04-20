@@ -37,42 +37,61 @@ void c_p_c()
     freopen("output.txt", "w", stdout);
 #endif
 }
-
+// Leetcode - 295 - Find Median from Data Stream
 class MedianFinder
-// The median is the middle value in an ordered integer list.
 {
+
+private:
+    pqs minHeap;
+    pqb maxHeap;
+
 public:
     /** initialize your data structure here. */
-    pqs x;
     MedianFinder()
     {
     }
-
+    // adding number to data structure
     void addNum(int num)
     {
-        x.push(num);
+
+        if (maxHeap.empty() || maxHeap.top() > num)
+        {
+            maxHeap.push(num);
+        }
+        else
+        {
+            minHeap.push(num);
+        }
+
+        // rebalancing the two halfs
+        if (maxHeap.size() > minHeap.size() + 1)
+        {
+            minHeap.push(maxHeap.top());
+            maxHeap.pop();
+        }
+        else if (maxHeap.size() + 1 < minHeap.size())
+        {
+            maxHeap.push(minHeap.top());
+            minHeap.pop();
+        }
     }
 
     double findMedian()
     {
-        int n = x.size();
-        if (n == 0)
-        {
-            return 0;
-        }
-        if (n % 2 == 1)
-        {
-            //odd
-            return x[n / 2];
-        }
+        if (maxHeap.size() == minHeap.size())
+            return maxHeap.empty() ? 0 : (maxHeap.top() + minHeap.top()) / 2.0;
         else
-        {
-            return (x[(n / 2) - 1] + myArray[n / 2]) / 2.0;
-        }
+            return maxHeap.size() > minHeap.size() ? maxHeap.top()
+                                                   : minHeap.top();
     }
 };
 
-// Leetcode - 295
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * MedianFinder* obj = new MedianFinder();
+ * obj->addNum(num);
+ * double param_2 = obj->findMedian();
+ */
 
 /**
  * Your MedianFinder object will be instantiated and called as such:
