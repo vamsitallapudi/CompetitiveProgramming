@@ -37,29 +37,62 @@ void c_p_c()
     freopen("output.txt", "w", stdout);
 #endif
 }
-bool comp(int i, int j)
-{
-    return (i < j);
-}
+
 class Solution
 {
 public:
-    priority_queue<int> maxHeap;
-    vector<int> res;
-    vector<int> maxSlidingWindow(vector<int> &nums, int k)
+    deque<long> dq;
+    vector<long> nums;
+    long maxIndex = 0;
+
+    void clean_deque(long i, long k)
     {
-        for (int i = 0, j = i + k; i < nums.size() - k, j < nums.size() + 1; i++, j++)
+        // remove elements out of current window ((i-k+1) till i)
+        if (!dq.empty() && dq.front() == i - k)
         {
-            res.push_back(*max_element(nums.begin() + i, nums.begin() + j));
+            dq.pop_front();
         }
-        return res;
+
+        // remove all the elements less than the curr element
+        while (!dq.empty() && nums[i] > nums[dq.back()])
+        {
+            dq.pop_back();
+        }
+    }
+
+    vector<long> maxSlidingWindow(vector<long> &nums, long k)
+    {
+        long n = nums.size();
+        if (n * k == 0)
+            return vector<long>{0};
+        if (k == 1)
+            return nums;
+
+        this->nums = nums;
+        for (long i = 0; i < k; i++)
+        {
+            clean_deque(i, k);
+            dq.push_back(i);
+            if (nums[i] > nums[maxIndex])
+                maxIndex = i;
+        }
+        vector<long> ans;
+        ans.push_back(nums[maxIndex]);
+
+        for (long i = k; i < n; i++)
+        {
+            clean_deque(i, k);
+            dq.push_back(i);
+            ans.push_back(nums[dq.front()]);
+        }
+        return ans;
     }
 };
 void solve()
 {
     Solution *s = new Solution();
-    vector<int> nums{1, 3, -1, -3, 5, 3, 6, 7};
-    vector<int> sol = s->maxSlidingWindow(nums, 3);
+    vector<long> nums{1, 3, 1, 2, 0, 5};
+    vector<long> sol = s->maxSlidingWindow(nums, 3);
     for (auto &i : sol)
     {
         cout << i;
