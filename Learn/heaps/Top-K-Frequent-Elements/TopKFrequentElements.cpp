@@ -43,51 +43,41 @@ class Solution
 public:
     vector<int> topKFrequent(vector<int> &nums, int k)
     {
-        // O(1) time
-        if (k == nums.size())
+        vector<int> sol(k);
+        map<int, int> freq;
+        for (auto n : nums)
         {
-            return nums;
+            freq[n]++;
         }
-        // 1. Build HashMap with frequency of elements.
-        map<int, int> count_map;
-        for (int n : nums)
-        {
-            count_map[n]++;
-        }
-        // 2. creating & building max heap
-        auto comp = [&count_map](int a, int b) {
-            return count_map[a] > count_map[b];
+        auto comp = [&freq](int a, int b) {
+            return freq[a] > freq[b];
         };
-        priority_queue<int, vector<int>, decltype(comp)> heap(comp);
-
-        // keeping top k elements only in heap
-        for (pair<int, int> p : count_map)
+        priority_queue<int, vector<int>, decltype(comp)> minHeap(comp);
+        for (auto i : freq)
         {
-            heap.push(p.first);
-            if (heap.size() > k)
+            minHeap.push(i.first);
+            if (minHeap.size() > k)
             {
-                heap.pop();
+                minHeap.pop();
             }
         }
-        // 3. building output array
-        vector<int> top(k);
         for (int i = k - 1; i >= 0; i--)
         {
-            top[i] = heap.top();
-            heap.pop();
+            sol[i] = minHeap.top();
+            minHeap.pop();
         }
-        return top;
+        return sol;
     }
 };
 
 void solve()
 {
-    Solution *s = new Solution();
-    vector<int> nums{4, 1, -1, 2, -1, 2, 3};
-    vector<int> sol = s->topKFrequent(nums, 2);
-    for (auto &i : sol)
+    Solution *x = new Solution();
+    vector<int> y = {1, 1, 1, 2, 3, 3, 4};
+    vector<int> ans = x->topKFrequent(y, 2);
+    for (auto i : ans)
     {
-        cout << i;
+        cout << i << "\n";
     }
 }
 int main()
