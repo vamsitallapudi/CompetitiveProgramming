@@ -43,24 +43,28 @@ class Solution
 public:
     vector<int> topKFrequent(vector<int> &nums, int k)
     {
-        vector<int> sol(k);
         map<int, int> freq;
-        for (auto n : nums)
-        {
-            freq[n]++;
-        }
+
         auto comp = [&freq](int a, int b) {
             return freq[a] > freq[b];
         };
         priority_queue<int, vector<int>, decltype(comp)> minHeap(comp);
-        for (auto i : freq)
+        vector<int> sol(k);
+
+        for (auto i : nums)
         {
-            minHeap.push(i.first);
+            freq[i]++;
+        }
+
+        for (pair<int, int> p : freq)
+        {
+            minHeap.push(p.first);
             if (minHeap.size() > k)
             {
                 minHeap.pop();
             }
         }
+
         for (int i = k - 1; i >= 0; i--)
         {
             sol[i] = minHeap.top();
