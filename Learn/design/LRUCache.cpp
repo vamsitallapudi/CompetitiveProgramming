@@ -40,44 +40,61 @@ void c_p_c()
 
 class LRUCache
 {
-    struct Node
-    {
-        int value = -1;
-    };
+
+private:
     int capacity;
-    map<int, Node> lruMap;
-    deque<int> accessQueue;
+    unordered_map<int, int> lruMap;
+    deque<int> accessQueue; // using to refresh keys
 
 public:
     LRUCache(int capacity)
     {
+        accessQueue = deque<int>(capacity, -1);
         this->capacity = capacity;
     }
 
     int get(int key)
     {
-        if (lruMap[key].value == -1)
-            return -1;
-        cleanUp(key);
-        return lruMap[key].value;
+        if (lruMap.find(key) != lruMap.end())
+        {
+            refresh(key);
+            return lruMap[key];
+        }
+        return -1;
     }
 
     void put(int key, int value)
     {
-        this->lruMap[key].value = value;
-        cleanUp(key);
+        if (lruMap.find(key) != lruMap.end())
+        {
+            refresh(key);
+        }
+        else
+        {
+            accessQueue.push_back(key);
+            manageCapacity();
+        }
+        lruMap[key] = value;
     }
 
-    void cleanUp(int key)
+    void refresh(int key)
     {
-        for (int i = 0; i < accessQueue.size(); i++)
+        // to check if the key exists and
+        // to refresh the key by setting it to back of deque and
+        // to remove the existing key from its current place
+        for (auto it = accessQueue.begin(); it != accessQueue.end(); it++)
         {
-            if (accessQueue[i] == key)
+            if (*it == key)
             {
-                accessQueue.erase(accessQueue.begin() + i);
+                accessQueue.erase(it);
+                accessQueue.push_back(key);
+                break;
             }
         }
-        accessQueue.push_back(key);
+    }
+    void manageCapacity()
+    {
+        // to check if accessqueue exceeds its capacity and to remove it from lrumap
         if (accessQueue.size() > capacity)
         {
             int x = accessQueue.front();
