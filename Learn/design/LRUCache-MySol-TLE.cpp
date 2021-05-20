@@ -40,8 +40,12 @@ void c_p_c()
 
 class LRUCache
 {
+    struct Node
+    {
+        int value = -1;
+    };
     int capacity;
-    map<int, int> lruMap;
+    map<int, Node> lruMap;
     deque<int> accessQueue;
 
 public:
@@ -52,17 +56,19 @@ public:
 
     int get(int key)
     {
-        findOrAddToQueue(key);
-        return (lruMap[key] != 0) ? lruMap[key] : -1;
+        if (lruMap[key].value == -1)
+            return -1;
+        cleanUp(key);
+        return lruMap[key].value;
     }
 
     void put(int key, int value)
     {
-        this->lruMap[key] = value;
-        findOrAddToQueue(key);
+        this->lruMap[key].value = value;
+        cleanUp(key);
     }
 
-    void findOrAddToQueue(int key)
+    void cleanUp(int key)
     {
         for (int i = 0; i < accessQueue.size(); i++)
         {
@@ -83,12 +89,18 @@ public:
 
 void solve()
 {
+    // ["LRUCache", "put", "put", "get", "put", "get", "put", "get", "get", "get"]
+    // [[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]
     LRUCache *cache = new LRUCache(2);
     cache->put(1, 1);
     cache->put(2, 2);
-    cache->get(2);
     cout << cache->get(1);
+    cache->put(3, 3);
     cout << cache->get(2);
+    cache->put(4, 4);
+    cout << cache->get(1);
+    cout << cache->get(3);
+    cout << cache->get(4);
 }
 int main()
 {
