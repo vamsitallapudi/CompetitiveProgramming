@@ -83,7 +83,8 @@
         "stack": "cpp"
     },
     "java.project.sourcePaths": [
+        "Learn/graphs",
         "Learn",
-        "Learn/graphs"
+        "MyOnlineSubmissions/Leetcode/weekly/246"
     ]
 }

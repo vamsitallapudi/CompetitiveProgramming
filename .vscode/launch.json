@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "Launch LargestOddNumber",
+            "request": "launch",
+            "mainClass": "LargestOddNumber",
+            "projectName": "CompetitiveProgramming_cbf5da89"
+        },
+        {
             "name": "g++ - Build and debug active file",
             "type": "cppdbg",
             "request": "launch",
