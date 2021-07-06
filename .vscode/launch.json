@@ -6,9 +6,9 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch LargestOddNumber",
+            "name": "Launch Java Proj",
             "request": "launch",
-            "mainClass": "LargestOddNumber",
+            "mainClass": "${file}",
             "projectName": "CompetitiveProgramming_cbf5da89"
         },
         {
