@@ -131,6 +131,44 @@ public class L2Graphs {
         }
     }
 
+    public boolean isConnected() {
+        int flag = 0;
+        HashMap<String, Boolean> processed = new HashMap<>();
+        LinkedList<String> queue = new LinkedList<>();
+
+        for (String key : vertices.keySet()) {
+
+            if (processed.containsKey(key)) {
+                continue;
+            }
+            flag++;
+            queue.add(key);
+
+            while (!queue.isEmpty()) {
+
+                String myEle = queue.removeFirst();
+
+                if (processed.containsKey(myEle)) {
+                    continue;
+                }
+                processed.put(myEle, true);
+
+                List<String> nbrs = new ArrayList<>(vertices.get(myEle).neighbours.keySet());
+                for (String nbr : nbrs) {
+                    if (!processed.containsKey(nbr)) {
+                        queue.addLast(nbr);
+                    }
+                }
+            }
+        }
+
+        if (flag >= 2) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public static void main(String[] args) {
         L2Graphs graphs = new L2Graphs();
         graphs.addVertex("A");
@@ -146,5 +184,6 @@ public class L2Graphs {
         graphs.display();
         // graphs.dfs();
         graphs.bfs();
+        System.out.println("Is Graphs Connected ? " + graphs.isConnected());
     }
 }
