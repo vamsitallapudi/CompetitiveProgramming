@@ -89,10 +89,42 @@ public class L2Graphs {
                 System.out.println(myVal + " ");
 
                 Vertex vertex = vertices.get(myVal);
-                ArrayList<String> nbrs = new ArrayList<String>(vertex.neighbours);
+                List<String> nbrs = new ArrayList<>(vertex.neighbours.keySet());
                 for (String nbr : nbrs) {
                     if (!processed.containsKey(nbr)) {
                         stack.push(nbr);
+                    }
+                }
+            }
+        }
+    }
+
+    public void bfs() {
+        HashMap<String, Boolean> processed = new HashMap<>();
+        LinkedList<String> queue = new LinkedList<>();
+
+        for (String key : vertices.keySet()) {
+
+            if (processed.containsKey(key)) {
+                continue;
+            }
+
+            queue.add(key);
+
+            while (!queue.isEmpty()) {
+
+                String myEle = queue.removeFirst();
+
+                if (processed.containsKey(myEle)) {
+                    continue;
+                }
+                processed.put(myEle, true);
+                System.out.println(myEle + " ");
+
+                List<String> nbrs = new ArrayList<>(vertices.get(myEle).neighbours.keySet());
+                for (String nbr : nbrs) {
+                    if (!processed.containsKey(nbr)) {
+                        queue.addLast(nbr);
                     }
                 }
             }
@@ -112,5 +144,7 @@ public class L2Graphs {
         graphs.addEdge("A", "D", 1);
         graphs.addEdge("E", "B", 5);
         graphs.display();
+        // graphs.dfs();
+        graphs.bfs();
     }
 }
