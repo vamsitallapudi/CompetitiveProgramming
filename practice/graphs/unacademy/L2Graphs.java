@@ -172,19 +172,14 @@ public class L2Graphs {
             if (processed.containsKey(key)) {
                 continue;
             }
-
             queue.add(key);
-
             while (!queue.isEmpty()) {
-
                 String myEle = queue.removeFirst();
-
                 if (processed.containsKey(myEle)) {
                     return true;
                 }
                 processed.put(myEle, true);
                 System.out.println(myEle + " ");
-
                 List<String> nbrs = new ArrayList<>(vertices.get(myEle).neighbours.keySet());
                 for (String nbr : nbrs) {
                     if (!processed.containsKey(nbr)) {
@@ -226,6 +221,10 @@ public class L2Graphs {
             myAL.add(connList);
         }
         return myAL;
+    }
+
+    public boolean isTree() {
+        return isConnected() && !isCyclic();
     }
 
     public static void main(String[] args) {
