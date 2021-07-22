@@ -135,7 +135,6 @@ public class L2Graphs {
         int flag = 0;
         HashMap<String, Boolean> processed = new HashMap<>();
         LinkedList<String> queue = new LinkedList<>();
-
         for (String key : vertices.keySet()) {
 
             if (processed.containsKey(key)) {
@@ -143,15 +142,48 @@ public class L2Graphs {
             }
             flag++;
             queue.add(key);
+            while (!queue.isEmpty()) {
+                String myEle = queue.removeFirst();
+                if (processed.containsKey(myEle)) {
+                    continue;
+                }
+                processed.put(myEle, true);
+                List<String> nbrs = new ArrayList<>(vertices.get(myEle).neighbours.keySet());
+                for (String nbr : nbrs) {
+                    if (!processed.containsKey(nbr)) {
+                        queue.addLast(nbr);
+                    }
+                }
+            }
+        }
+        if (flag >= 2) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public boolean isCyclic() {
+        HashMap<String, Boolean> processed = new HashMap<>();
+        LinkedList<String> queue = new LinkedList<>();
+
+        for (String key : vertices.keySet()) {
+
+            if (processed.containsKey(key)) {
+                continue;
+            }
+
+            queue.add(key);
 
             while (!queue.isEmpty()) {
 
                 String myEle = queue.removeFirst();
 
                 if (processed.containsKey(myEle)) {
-                    continue;
+                    return true;
                 }
                 processed.put(myEle, true);
+                System.out.println(myEle + " ");
 
                 List<String> nbrs = new ArrayList<>(vertices.get(myEle).neighbours.keySet());
                 for (String nbr : nbrs) {
@@ -161,12 +193,39 @@ public class L2Graphs {
                 }
             }
         }
+        return false;
+    }
 
-        if (flag >= 2) {
-            return false;
-        } else {
-            return true;
+    public ArrayList<ArrayList<String>> getConnectedComponents() {
+        // <A,B,C,D>, <E,F>
+        ArrayList<ArrayList<String>> myAL = new ArrayList<>();
+        HashMap<String, Boolean> processed = new HashMap<>();
+        LinkedList<String> queue = new LinkedList<>();
+
+        for (String key : vertices.keySet()) {
+
+            if (processed.containsKey(key)) {
+                continue;
+            }
+            ArrayList<String> connList = new ArrayList<>();
+            queue.add(key);
+            while (!queue.isEmpty()) {
+                String myEle = queue.removeFirst();
+                if (processed.containsKey(myEle)) {
+                    continue;
+                }
+                processed.put(myEle, true);
+                connList.add(myEle);
+                List<String> nbrs = new ArrayList<>(vertices.get(myEle).neighbours.keySet());
+                for (String nbr : nbrs) {
+                    if (!processed.containsKey(nbr)) {
+                        queue.addLast(nbr);
+                    }
+                }
+            }
+            myAL.add(connList);
         }
+        return myAL;
     }
 
     public static void main(String[] args) {
@@ -184,6 +243,8 @@ public class L2Graphs {
         graphs.display();
         // graphs.dfs();
         graphs.bfs();
-        System.out.println("Is Graphs Connected ? " + graphs.isConnected());
+        System.out.println("Is Graph Connected ? " + graphs.isConnected());
+        System.out.println("Is Graph Cyclic ? " + graphs.isCyclic());
+        graphs.getConnectedComponents().stream().forEach(System.out::println);
     }
 }
