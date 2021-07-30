@@ -58,6 +58,31 @@ public class Graphs {
         v2.neighbours.remove(vname1);
     }
 
+    void dfs() {
+        HashMap<String, Boolean> processed = new HashMap<>();
+        Stack<String> s = new Stack<>();
+        for (String key : vertices.keySet()) {
+            if (processed.containsKey(key)) {
+                continue;
+            }
+            s.push(key);
+            while (!s.isEmpty()) {
+                String vname = s.pop();
+                if (processed.containsKey(vname)) {
+                    continue;
+                }
+                processed.put(vname, true);
+                System.out.println(vname);
+                Vertex v = vertices.get(vname);
+                for (String nbr : v.neighbours) {
+                    if (!processed.containsKey(nbr))
+                        s.push(nbr);
+                }
+            }
+
+        }
+    }
+
     void print() {
         for (Map.Entry<String, Vertex> entry : vertices.entrySet()) {
             System.out.println(entry.getKey() + "->" + entry.getValue().neighbours);
@@ -83,5 +108,7 @@ public class Graphs {
         System.out.println("---- Removing Edge from B to D----");
         graphs.removeEdge("B", "D");
         graphs.print();
+        System.out.println("---- DFS ----");
+        graphs.dfs();
     }
 }
