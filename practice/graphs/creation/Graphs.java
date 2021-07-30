@@ -83,6 +83,31 @@ public class Graphs {
         }
     }
 
+    void bfs() {
+        HashMap<String, Boolean> processed = new HashMap<>();
+        LinkedList<String> queue = new LinkedList<>();
+        for (String key : vertices.keySet()) {
+            if (processed.containsKey(key)) {
+                continue;
+            }
+            queue.push(key);
+            while (!queue.isEmpty()) {
+                String vname = queue.removeFirst();
+                if (processed.containsKey(vname)) {
+                    continue;
+                }
+                processed.put(vname, true);
+                System.out.println(vname);
+                Vertex v = vertices.get(vname);
+                for (String nbr : v.neighbours) {
+                    if (!processed.containsKey(nbr)) {
+                        queue.push(nbr);
+                    }
+                }
+            }
+        }
+    }
+
     void print() {
         for (Map.Entry<String, Vertex> entry : vertices.entrySet()) {
             System.out.println(entry.getKey() + "->" + entry.getValue().neighbours);
@@ -102,13 +127,15 @@ public class Graphs {
         graphs.addEdge("A", "D");
         graphs.addEdge("E", "B");
         graphs.print();
-        System.out.println("---- Removing Vertex E ----");
-        graphs.removeVertex("E");
-        graphs.print();
-        System.out.println("---- Removing Edge from B to D----");
-        graphs.removeEdge("B", "D");
-        graphs.print();
+        // System.out.println("---- Removing Vertex E ----");
+        // graphs.removeVertex("E");
+        // graphs.print();
+        // System.out.println("---- Removing Edge from B to D----");
+        // graphs.removeEdge("B", "D");
+        // graphs.print();
         System.out.println("---- DFS ----");
         graphs.dfs();
+        System.out.println("---- BFS ----");
+        graphs.bfs();
     }
 }
