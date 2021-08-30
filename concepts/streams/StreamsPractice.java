@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 public class StreamsPractice {
@@ -69,10 +70,8 @@ public class StreamsPractice {
         product.setId(300);
         product.setCode("Product3");
         productCategories.add(product);
-
-        List<String> codes = new ArrayList<>();
-        productCategories.stream().forEach(it -> codes.add(it.getCode()));
-        codes.forEach(System.out::println);
+        String codes = productCategories.stream().map(p -> p.getCode()).collect(Collectors.joining(" "));
+        System.out.println(codes);
 
     }
 
