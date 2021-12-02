@@ -1,103 +1,77 @@
 import java.io.*;
 import java.util.*;
-import java.util.function.BinaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-public class StreamsPractice {
-    class Product {
+class Node {
+    int value;
+    Node next;
 
-        int id;
-        String code;
+    public Node(int val) {
+        this.value = val;
+        this.next = null;
+    }
 
-        void setCode(String code) {
-            this.code = code;
+    public Node(int val, Node next) {
+        this.value = val;
+        this.next = next;
+    }
+}
+
+public class LinkedListPractice {
+    private static void printLLRev(Node n) {
+        if (n.next != null) {
+            Node temp = n.next;
+            printLLRev(temp);
         }
+        System.out.println(n.value);
+    }
 
-        String getCode() {
-            return code;
+    private static void reverse(Node node) {
+        if (node.next != null && node.next.next != null) {
+            reverse(node.next);
         }
+        node.next = node;
+    }
 
-        void setId(int id) {
-            this.id = id;
+    private static void printLL(Node n) {
+        System.out.println(n.value);
+        if (n.next != null) {
+            Node temp = n.next;
+            printLL(temp);
         }
+    }
 
-        int getId() {
-            return id;
+    private static void insertInMiddle(Node first, Node newNode) {
+        Node slowPtr = first;
+        Node fastPtr = first;
+        while (slowPtr != null && fastPtr != null && fastPtr.next != null) {
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
         }
-
+        newNode.next = slowPtr.next;
+        slowPtr.next = newNode;
+        printLL(first);
     }
 
     private static void solve() throws IOException {
-        // List<String> list = new ArrayList<>();
-        // list.add("Vamsi");
-        // list.add("Krishna");
-        // list.add("Tallapudi");
-        // System.out.println(list);
-        // Long l2 = list.stream().filter(i -> i.length() > 5).count();
-        // System.out.println(l2);
+        Node node = new Node(1);
+        Node node2 = new Node(2);
+        Node node3 = new Node(3);
+        Node node4 = new Node(4);
+        Node node5 = new Node(5);
+        node.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        System.out.println("Printing LL");
+        printLL(node);
+        System.out.println("Printing LL in reverse");
+        printLLRev(node);
+        System.out.println("Inserting in middle");
+        insertInMiddle(node, new Node(7));
+        System.out.println("Reversing a LL");
+        reverse(node);
+        printLL(node);
 
-        // List<Integer> l1 = new ArrayList<>();
-        // l1.add(0);
-        // l1.add(10);
-        // l1.add(5);
-        // l1.add(15);
-        // l1.add(25);
-        // System.out.println(l1); // [0, 10, 5, 15, 25]
-        // List<Integer> l2 = l1.stream().sorted().collect(Collectors.toList());
-        // System.out.println(l2); // [0, 5, 10, 15, 25]
-        // List<Integer> l3 = l1.stream().sorted((i, j) ->
-        // j.compareTo(i)).collect(Collectors.toList());
-        // System.out.println("Custom sorting order: " + l3);
-
-        // List<Integer> l1 = new ArrayList<>();
-        // l1.add(0);
-        // l1.add(10);
-        // l1.add(5);
-        // l1.add(15);
-        // l1.add(25);
-        // Integer min = l1.stream().min((i, j) -> i.compareTo(j)).get();
-        // System.out.println(min); // 0
-        // Integer max = l1.stream().max((i, j) -> i.compareTo(j)).get();
-        // System.out.println(max); // 25
-
-        List<Product> productCategories = new ArrayList<>();
-        StreamsPractice practice = new StreamsPractice();
-        Product product = practice.new Product();
-        product.setId(1);
-        product.setCode("Product1");
-        System.out.println(String.format("Before modification: %s", product.getCode()));
-        sendData(product);
-        System.out.println(String.format("After modification: %s", product.getCode()));
-        productCategories.add(product);
-        product = practice.new Product();
-        product.setId(2);
-        product.setCode("Product3");
-        productCategories.add(product);
-        product = practice.new Product();
-        product.setId(3);
-        product.setCode("Product2");
-        productCategories.add(product);
-        product.setId(4);
-        product.setCode("Product4");
-        productCategories.add(product);
-        String codes = productCategories.stream().map(p -> p.getCode()).collect(Collectors.joining(" "));
-
-        List<Integer> ids = productCategories.stream().map(p -> p.getId()).collect(Collectors.toList());
-        IntSummaryStatistics stats = ids.stream().mapToInt(Integer::intValue).summaryStatistics();
-        System.out.println(stats.getAverage());
-        System.out.println(ids.stream().mapToInt(Integer::intValue).average().getAsDouble());
-        System.out.println(ids.stream().reduce((a, b) -> a + b).get());
-
-        // Map<Product, List<Product>> myMap =
-        // productCategories.stream().collect(Collectors.groupingBy(e -> e.getCode()));
-        System.out.println();
-        // streams with hashmaps
-        // Map<String, Integer> map = new HashMap<>();
-    }
-
-    static void sendData(Product p) {
-        p.setCode("Product 1 modified");
     }
 
     static class Reader {

@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ProducerConsumerSolution",
+            "request": "launch",
+            "mainClass": "ProducerConsumerSolution",
+            "projectName": "CompetitiveProgramming_cbf5da89"
+        },
+        {
+            "type": "java",
+            "name": "Launch ParkingSpace",
+            "request": "launch",
+            "mainClass": "ParkingSpace",
+            "projectName": "CompetitiveProgramming_cbf5da89"
+        },
+        {
+            "type": "java",
             "name": "Launch Java Proj",
             "request": "launch",
             "mainClass": "${file}",

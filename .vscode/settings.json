@@ -83,8 +83,7 @@
         "stack": "cpp"
     },
     "java.project.sourcePaths": [
-        "Learn/graphs",
-        "Learn",
-        "MyOnlineSubmissions/Leetcode/weekly/246"
+        "contests/CodeChef/july_long_challenge_2021/XxOoRr",
+        "concepts/multithreading/interThreadCommunication"
     ]
 }

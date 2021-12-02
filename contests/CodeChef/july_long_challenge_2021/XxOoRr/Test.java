@@ -1,103 +1,39 @@
 import java.io.*;
 import java.util.*;
-import java.util.function.BinaryOperator;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
-public class StreamsPractice {
-    class Product {
+public class Test {
+    static class MyComparator implements Comparator {
+        @Override
+        public int compare(Object o1, Object o2) {
 
-        int id;
-        String code;
-
-        void setCode(String code) {
-            this.code = code;
+            Integer i1 = (Integer) o1;
+            Integer i2 = (Integer) o2;
+            if (i1 < i2)
+                return 1;
+            else if (i1 > i2)
+                return -1;
+            else
+                return 0;
         }
-
-        String getCode() {
-            return code;
-        }
-
-        void setId(int id) {
-            this.id = id;
-        }
-
-        int getId() {
-            return id;
-        }
-
     }
 
     private static void solve() throws IOException {
-        // List<String> list = new ArrayList<>();
-        // list.add("Vamsi");
-        // list.add("Krishna");
-        // list.add("Tallapudi");
-        // System.out.println(list);
-        // Long l2 = list.stream().filter(i -> i.length() > 5).count();
-        // System.out.println(l2);
 
-        // List<Integer> l1 = new ArrayList<>();
-        // l1.add(0);
-        // l1.add(10);
-        // l1.add(5);
-        // l1.add(15);
-        // l1.add(25);
-        // System.out.println(l1); // [0, 10, 5, 15, 25]
-        // List<Integer> l2 = l1.stream().sorted().collect(Collectors.toList());
-        // System.out.println(l2); // [0, 5, 10, 15, 25]
-        // List<Integer> l3 = l1.stream().sorted((i, j) ->
-        // j.compareTo(i)).collect(Collectors.toList());
-        // System.out.println("Custom sorting order: " + l3);
-
-        // List<Integer> l1 = new ArrayList<>();
-        // l1.add(0);
-        // l1.add(10);
-        // l1.add(5);
-        // l1.add(15);
-        // l1.add(25);
-        // Integer min = l1.stream().min((i, j) -> i.compareTo(j)).get();
-        // System.out.println(min); // 0
-        // Integer max = l1.stream().max((i, j) -> i.compareTo(j)).get();
-        // System.out.println(max); // 25
-
-        List<Product> productCategories = new ArrayList<>();
-        StreamsPractice practice = new StreamsPractice();
-        Product product = practice.new Product();
-        product.setId(1);
-        product.setCode("Product1");
-        System.out.println(String.format("Before modification: %s", product.getCode()));
-        sendData(product);
-        System.out.println(String.format("After modification: %s", product.getCode()));
-        productCategories.add(product);
-        product = practice.new Product();
-        product.setId(2);
-        product.setCode("Product3");
-        productCategories.add(product);
-        product = practice.new Product();
-        product.setId(3);
-        product.setCode("Product2");
-        productCategories.add(product);
-        product.setId(4);
-        product.setCode("Product4");
-        productCategories.add(product);
-        String codes = productCategories.stream().map(p -> p.getCode()).collect(Collectors.joining(" "));
-
-        List<Integer> ids = productCategories.stream().map(p -> p.getId()).collect(Collectors.toList());
-        IntSummaryStatistics stats = ids.stream().mapToInt(Integer::intValue).summaryStatistics();
-        System.out.println(stats.getAverage());
-        System.out.println(ids.stream().mapToInt(Integer::intValue).average().getAsDouble());
-        System.out.println(ids.stream().reduce((a, b) -> a + b).get());
-
-        // Map<Product, List<Product>> myMap =
-        // productCategories.stream().collect(Collectors.groupingBy(e -> e.getCode()));
-        System.out.println();
-        // streams with hashmaps
-        // Map<String, Integer> map = new HashMap<>();
-    }
-
-    static void sendData(Product p) {
-        p.setCode("Product 1 modified");
+        Comparator<Integer> comp = (i, j) -> {
+            if (i < j)
+                return 1;
+            else if (i > j)
+                return -1;
+            else
+                return 0;
+        };
+        TreeSet t = new TreeSet(comp);
+        t.add(10);
+        t.add(0);
+        t.add(15);
+        t.add(20);
+        t.add(20);
+        System.out.println(t); // [20, 15, 10, 0]
     }
 
     static class Reader {
