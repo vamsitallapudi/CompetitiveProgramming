@@ -12,7 +12,6 @@ public class StableArrangementOfRooks {
                 System.out.println(-1);
                 continue;
             }
-            char[][] output = new char[n][n];
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {
                     if (i == j && i % 2 == 0 && k > 0) {
