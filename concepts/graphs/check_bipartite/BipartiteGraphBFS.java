@@ -1,31 +1,42 @@
 import java.util.*;
 import java.io.*;
 
-public class BipartiteGraphDFS {
+// checking if its a bipartite graph using BFS
+// Question link: https://practice.geeksforgeeks.org/problems/bipartite-graph/1#
+
+public class BipartiteGraphBFS {
 
     public boolean isBipartite(int V, ArrayList<ArrayList<Integer>> adj) {
-        // Code here
-        int[] color = new int[V];
+        Queue<Integer> q = new LinkedList<>();
+        int color[] = new int[V];
         Arrays.fill(color, -1);
+        // Solution
         for (int v = 0; v < V; v++) {
-            if (color[v] == -1) {
-                if (!dfs(v, color, adj))
+            if (color[v] == -1) { // => unvisited component
+                if (!bfs(v, q, color, adj))
                     return false;
             }
         }
-
         return true;
     }
 
-    private boolean dfs(int v, int[] color, ArrayList<ArrayList<Integer>> adj) {
-        int pc = color[v];
-        for (int i : adj.get(v)) {
-            if (color[i] == -1) {
-                color[i] = 1 - pc;
-                if (!dfs(i, color, adj))
+    private boolean bfs(int v, Queue<Integer> q, int color[], ArrayList<ArrayList<Integer>> adj) {
+        q.add(v);
+        color[v] = 0;
+        while (!q.isEmpty()) {
+            int node = q.poll();
+            int parentC = color[node];
+            // iterate through adj nodes
+            for (int i : adj.get(node)) {
+                int c = color[i];
+                if (c == -1) {
+                    // unvisited => color it and add to queue
+                    color[i] = 1 - parentC;
+                    q.add(i);
+                } else if (c == parentC) {
+                    // not bipartite
                     return false;
-            } else if (color[i] == pc) {
-                return false;
+                }
             }
         }
         return true;
@@ -58,4 +69,5 @@ public class BipartiteGraphDFS {
                 System.out.println("0");
         }
     }
+
 }
