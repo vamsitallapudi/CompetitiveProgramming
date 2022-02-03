@@ -30,43 +30,43 @@ public class MSTPrimsAlgoBruteForce {
                     // updating key with adj node's weights
                     key[node.val] = node.weight;
                     // updating parent array with adj node's parents
-                    parent[node.val] = minKey;
+                    parent[node.val] = minInd;
                 }
             }
         }
-        for (int i : parent) {
-            System.out.print(i + " ");
+
+        for (int i = 1; i < N; i++) {
+            System.out.println(parent[i] + " - " + i);
         }
     }
 
     public static void main(String[] args) {
-        int V = 5;
-        List<List<Node>> adj = new ArrayList<List<Node>>();
+        int n = 5;
+        List<List<Node>> adj = new ArrayList<>();
 
-        for (int i = 0; i < V; i++) {
+        for (int i = 0; i < n; i++)
             adj.add(new ArrayList<>());
-        }
 
         adj.get(0).add(new Node(1, 2));
         adj.get(1).add(new Node(0, 2));
 
-        adj.get(1).add(new Node(2, 4));
-        adj.get(2).add(new Node(1, 4));
+        adj.get(1).add(new Node(2, 3));
+        adj.get(2).add(new Node(1, 3));
 
-        adj.get(0).add(new Node(3, 1));
-        adj.get(3).add(new Node(0, 1));
+        adj.get(0).add(new Node(3, 6));
+        adj.get(3).add(new Node(0, 6));
 
-        adj.get(3).add(new Node(2, 3));
-        adj.get(2).add(new Node(3, 3));
+        adj.get(1).add(new Node(3, 8));
+        adj.get(3).add(new Node(1, 8));
 
         adj.get(1).add(new Node(4, 5));
         adj.get(4).add(new Node(1, 5));
 
-        adj.get(2).add(new Node(4, 1));
-        adj.get(4).add(new Node(2, 1));
+        adj.get(2).add(new Node(4, 7));
+        adj.get(4).add(new Node(2, 7));
 
         MSTPrimsAlgoBruteForce s = new MSTPrimsAlgoBruteForce();
-        s.primsAlgoBruteforce(0, adj, V);
+        s.primsAlgoBruteforce(0, adj, n);
     }
 }
 
