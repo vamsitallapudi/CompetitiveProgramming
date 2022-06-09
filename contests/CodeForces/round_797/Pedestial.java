@@ -2,30 +2,22 @@ import java.io.*;
 
 public class Pedestial {
     private static void solve() throws IOException {
-        /* Your Answer Here */
         int t = inputInt();
         while (t-- > 0) {
-            int a, b, c;
-            int val = inputInt();
-            int each = val / 3;
-            c = each - 1;
-            b = each;
-            a = val - b - c;
-            while (a > b + 1) {
-                a--;
-                b++;
-                if (a == b) {
-                    if (b - 2 > c) {
-                        b--;
-                        c++;
-                    } else if (c - 1 > 0) {
-                        a++;
-                        c--;
-                    } else {
-                        a++;
-                        b--;
-                    }
-                }
+            int n = inputInt();
+            int a = 0, b = 0, c = 0;
+            if (n % 3 == 0) {
+                b = n / 3;
+                a = n / 3 + 1;
+                c = n / 3 - 1;
+            } else if (n % 3 == 1) {
+                b = n / 3;
+                a = n / 3 + 2;
+                c = n / 3 - 1;
+            } else {
+                b = n / 3 + 1;
+                a = n / 3 + 2;
+                c = n / 3 - 1;
             }
             System.out.println(b + " " + a + " " + c);
         }
