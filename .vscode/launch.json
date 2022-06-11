@@ -6,24 +6,16 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch ProducerConsumerSolution",
+            "name": "Launch Solution",
             "request": "launch",
-            "mainClass": "ProducerConsumerSolution",
+            "mainClass": "Solution",
             "projectName": "CompetitiveProgramming_cbf5da89"
         },
         {
             "type": "java",
-            "name": "Launch ParkingSpace",
+            "name": "Launch Current File",
             "request": "launch",
-            "mainClass": "ParkingSpace",
-            "projectName": "CompetitiveProgramming_cbf5da89"
-        },
-        {
-            "type": "java",
-            "name": "Launch Java Proj",
-            "request": "launch",
-            "mainClass": "${file}",
-            "projectName": "CompetitiveProgramming_cbf5da89"
+            "mainClass": "${file}"
         },
         {
             "name": "g++ - Build and debug active file",

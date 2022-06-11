@@ -84,6 +84,7 @@
     },
     "java.project.sourcePaths": [
         "contests/CodeChef/july_long_challenge_2021/XxOoRr",
-        "concepts/multithreading/interThreadCommunication"
+        "concepts/multithreading/interThreadCommunication",
+        "leetcode/39_combination_sum"
     ]
 }
