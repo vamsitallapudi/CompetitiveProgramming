@@ -3,29 +3,29 @@ import java.util.List;
 
 public class Solution {
     int[] a;
-    int t;
     List<List<Integer>> sol = new ArrayList<>();;
 
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        this.t = target;
         a = candidates;
-        recHelper(0, new ArrayList<>());
+        recHelper(0, target, new ArrayList<>());
         return sol;
     }
 
-    private void recHelper(int i, List<Integer> curr) {
-        int sum = curr.stream().reduce(0, (x, y) -> x + y);
-        if (i == a.length || sum >= t) {
-            if (sum == t) {
+    private void recHelper(int i, int target, List<Integer> curr) {
+        if (i == a.length) {
+            if (target == 0) {
                 sol.add(new ArrayList<>(curr));
             }
             return;
         }
-        curr.add(a[i]);
-        recHelper(i, curr);
-        recHelper(i + 1, curr);
-        curr.remove(curr.size() - 1);
-        recHelper(i + 1, curr);
+        // pick
+        if (a[i] <= target) {
+            curr.add(a[i]);
+            recHelper(i, target - a[i], curr);
+            curr.remove(curr.size() - 1);
+        }
+        // non pick
+        recHelper(i + 1, target, curr);
     }
 
     public static void main(String[] args) {
