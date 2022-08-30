@@ -10,14 +10,14 @@ public class Solution {
     }
 
     private void rec(int i, int[] c, int t, List<List<Integer>> sol, List<Integer> curr) {
+        // base cases
         if (t == 0) {
             sol.add(new ArrayList<>(curr));
             return;
         }
         if (i == c.length) {
             return;
-        } // base case
-
+        }
         // pick
         if (c[i] <= t) {
             curr.add(c[i]);

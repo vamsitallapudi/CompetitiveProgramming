@@ -1,6 +1,7 @@
 import java.util.Arrays;
 
 public class Solution {
+
     String t1, t2;
     int[][] memo;
 
@@ -24,10 +25,8 @@ public class Solution {
         if (memo[a][b] != -1) {
             return memo[a][b];
         }
-
         // option 1 -> no pick
         int o1 = lcs(a + 1, b);
-
         // option 2 -> pick
         int o2 = 0;
         // first occurance
