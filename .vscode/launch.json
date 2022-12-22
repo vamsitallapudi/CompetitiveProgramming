@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch ShapeEg",
+            "request": "launch",
+            "mainClass": "interfaces.ShapeEg",
+            "projectName": "CompetitiveProgramming_cbf5da89"
+        },
+        {
+            "type": "java",
             "name": "Launch FarAway",
             "request": "launch",
             "mainClass": "FarAway",
