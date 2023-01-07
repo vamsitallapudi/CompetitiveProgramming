@@ -17,5 +17,4 @@ public class ShapeEg {
             return new Square();
         }
     }
-
 }

@@ -6,6 +6,34 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch PalindromeWithDigitProduct",
+            "request": "launch",
+            "mainClass": "problems.PalindromeWithDigitProduct",
+            "projectName": "CompetitiveProgramming_cbf5da89"
+        },
+        {
+            "type": "java",
+            "name": "Launch Palindrome",
+            "request": "launch",
+            "mainClass": "problems.Palindrome",
+            "projectName": "CompetitiveProgramming_cbf5da89"
+        },
+        {
+            "type": "java",
+            "name": "Launch ReverseANumber",
+            "request": "launch",
+            "mainClass": "problems.ReverseANumber",
+            "projectName": "CompetitiveProgramming_cbf5da89"
+        },
+        {
+            "type": "java",
+            "name": "Launch ReverseANumber",
+            "request": "launch",
+            "mainClass": "ReverseANumber",
+            "projectName": "CompetitiveProgramming_cbf5da89"
+        },
+        {
+            "type": "java",
             "name": "Launch ShapeEg",
             "request": "launch",
             "mainClass": "interfaces.ShapeEg",

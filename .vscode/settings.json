@@ -83,13 +83,11 @@
         "stack": "cpp"
     },
     "java.project.sourcePaths": [
-        "practice/basics/java_coaching/oop/polymorphism/staticPolymorphism",
-        "practice/basics/java_coaching/oop/polymorphism/runtimePolymorphism",
-        "practice/basics/java_coaching/oop/inheritance",
-        "practice/basics/java_coaching/oop/classesAndObjects",
+        "practice/basics/java_coaching",
         "practice/arrays/FarAway",
         "leetcode/39_combination_sum",
         "concepts/multithreading/interThreadCommunication",
         "practice/basics/java_coaching/oop/abstraction"
-    ]
+    ],
+    "java.debug.settings.onBuildFailureProceed": true
 }
