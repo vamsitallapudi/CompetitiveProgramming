@@ -1,14 +1,16 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
-public class LRUCache {
+public class LRUCacheNew {
+
 
     private Map<Integer, DLLNode> cache;
     private DLLNode first;
     private DLLNode last;
     private int capacity;
 
-    public LRUCache(int capacity) {
-        cache = new HashMap<Integer, DLLNode>();
+    public LRUCacheNew(int capacity) {
+        cache = new HashMap<>();
         this.capacity = capacity;
         first = new DLLNode();
         last = new DLLNode();
@@ -17,9 +19,9 @@ public class LRUCache {
         last.prev = first;
         last.next = null;
     }
-
+    
     public int get(int key) {
-        if (cache.containsKey(key)) {
+        if(cache.containsKey(key)) {
             return refreshKey(key);
         }
         return -1;
@@ -31,9 +33,32 @@ public class LRUCache {
         return node.value;
     }
 
+    private void refreshNode(DLLNode node) {
+        removeNode(node);
+        pushFront(node);
+    }
+
+    private void removeNode(DLLNode node) {
+        node.prev.next = node.next.next;
+        node.next.prev = node.prev;
+    }
+
+    private DLLNode removeLast() {
+        DLLNode node = last.prev;
+        removeNode(node);
+        return node;
+    }
+
+    private void pushFront(DLLNode node) {
+        node.next = first.next;
+        node.prev = first;
+        first.next.prev = node;
+        first.next = node;
+    }
+    
     public void put(int key, int value) {
         DLLNode node;
-        if (cache.containsKey(key)) {
+        if(cache.containsKey(key)) {
             node = cache.get(key);
             node.value = value;
             refreshNode(node);
@@ -41,40 +66,18 @@ public class LRUCache {
             node = new DLLNode(key, value);
             cache.put(key, node);
             pushFront(node);
-            if (cache.size() > capacity) {
+            if(cache.size() > capacity) {
                 DLLNode lastNode = removeLast();
                 cache.remove(lastNode.key);
             }
         }
     }
 
-    private void refreshNode(DLLNode node) {
-        removeNode(node);
-        pushFront(node);
-    }
-
-    // moves the node to front, i.e., first.next
-    private void pushFront(DLLNode node) {
-        node.next = first.next;
-        node.prev = first;
-        first.next.prev = node;
-        first.next = node;
-    }
-
-    // removes the given node
-    private void removeNode(DLLNode node) {
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-    }
-
-    // removes the last item
-    public DLLNode removeLast() {
-        DLLNode node = last.prev;
-        removeNode(node);
-        return node;
-    }
-
+    /**
+     * DLLNode
+     */
     public class DLLNode {
+    
         int key;
         int value;
         DLLNode prev;
@@ -87,13 +90,21 @@ public class LRUCache {
         }
 
         public DLLNode(int key, int value) {
-            prev = null;
-            next = null;
             this.key = key;
             this.value = value;
+            prev = next = null;
         }
-    }
 
+        
+        public DLLNode(int key, int value, DLLNode first, DLLNode last
+        ) {
+            this.key = key;
+            this.value = value;
+            prev = next = null;
+        }
+
+    }
+    
     public static void main(String[] args) {
         LRUCache lruCache = new LRUCache(2);
         lruCache.put(2, 1);
@@ -103,4 +114,12 @@ public class LRUCache {
         lruCache.put(4, 1);
         System.out.println(lruCache.get(2));
     }
+    
 }
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
