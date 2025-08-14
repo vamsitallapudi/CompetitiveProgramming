@@ -1,7 +1,8 @@
 {
+    "version": "2.0.0",
     "tasks": [
         {
-            "type": "cppbuild",
+            "type": "shell",
             "label": "C/C++: g++ build active file",
             "command": "/usr/local/bin/g++",
             "args": [
@@ -13,15 +14,94 @@
             "options": {
                 "cwd": "${workspaceFolder}"
             },
-            "problemMatcher": [
-                "$gcc"
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "detail": "compiler: /usr/local/bin/g++"
+        },
+        {
+            "label": "Java: Compile and Run with I/O",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "-c",
+                "cd \"${fileDirname}\" && javac \"${fileBasename}\" && java \"${fileBasenameNoExtension}\" < \"${workspaceFolder}/input.txt\" > \"${workspaceFolder}/output.txt\""
             ],
             "group": {
                 "kind": "build",
                 "isDefault": true
-              },
-            "detail": "compiler: /usr/local/bin/g++"
+            },
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Java: Compile Only",
+            "type": "shell",
+            "command": "javac",
+            "args": [
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "Java: Run with I/O",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "-c",
+                "java \"${fileBasenameNoExtension}\" < \"${workspaceFolder}/input.txt\" > \"${workspaceFolder}/output.txt\""
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "dependsOn": "Java: Compile Only",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "Python: Run with I/O",
+            "type": "shell",
+            "command": "sh",
+            "args": [
+                "-c",
+                "python3 \"${file}\" < \"${workspaceFolder}/input.txt\" > \"${workspaceFolder}/output.txt\""
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+            "presentation": {
+                "echo": false,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            },
+            "problemMatcher": []
         }
-    ],
-    "version": "2.0.0"
+    ]
 }

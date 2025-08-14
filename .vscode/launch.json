@@ -5,6 +5,42 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Debug Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd": "${fileDirname}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "java",
+            "name": "TrionicArray",
+            "request": "launch",
+            "mainClass": "contests.Leetcode.contest_461.TrionicArray",
+            "projectName": "CompetitiveProgramming_d2898f72"
+        },
+        {
+            "type": "java",
+            "name": "MaxProductSubArrayDP",
+            "request": "launch",
+            "mainClass": "leetcode.max_product_subarray_152.MaxProductSubArrayDP",
+            "projectName": "CompetitiveProgramming_d2898f72"
+        },
+        {
+            "type": "java",
+            "name": "MaxProductSubArrayDP",
+            "request": "launch",
+            "mainClass": "MaxProductSubArrayDP",
+            "projectName": "CompetitiveProgramming_d2898f72"
+        },
+        {
             "type": "java",
             "name": "Launch PalindromeWithDigitProduct",
             "request": "launch",
@@ -73,12 +109,6 @@
             "request": "launch",
             "mainClass": "Solution",
             "projectName": "CompetitiveProgramming_cbf5da89"
-        },
-        {
-            "type": "java",
-            "name": "Launch Current File",
-            "request": "launch",
-            "mainClass": "${file}"
         },
         {
             "name": "g++ - Build and debug active file",

@@ -1,3 +1,5 @@
+package leetcode.max_product_subarray_152;
+
 public class MaxProductSubArrayDP {
 
     int result = 0;
