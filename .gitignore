@@ -10,3 +10,4 @@ Learn/Trees/PathSumIterative.dSYM/Contents/Resources/DWARF/PathSumIterative
 *.txt
 *.DS_Store
 *.class
+.vscode/*
